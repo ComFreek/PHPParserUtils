@@ -67,7 +67,7 @@ class ParserStrStream {
 	 */
 	public function moveNext($i = 1) {
 		$this->pos += $i;
-		if ($this->pos >= $this->len - 1) {
+		if ($this->pos >= $this->len) {
 				return false;
 		}
 	}
