@@ -8,6 +8,13 @@ class ParserStrStreamTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(1, $str->len());
 	}
 	
+	public function eatUntilChar() {
+		$str = new ParserStrStream('âêîôû!');
+		$trash = $str->eatUntilChar('û');
+		$this->assertEquals('âêîô', $trash);
+		$this->assertEquals('!', $str->cur());
+	}
+	
 	public function testNextPrevBoundsHandling() {
 		$str = new ParserStrStream('âêîôû');
 		$this->assertEquals(false, $str->prev());
