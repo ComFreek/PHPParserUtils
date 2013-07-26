@@ -61,6 +61,15 @@ class ParserStrStream {
 		return $this->chars[$this->pos];
 	}
 	
+	public function eatUntilChar($needle) {
+		$trash = '';
+		do {
+			$trash .= $this->cur();
+		} while($this->moveNext() !== false || $this->cur() == $needle);
+		
+		return $trash;
+	}
+	
 	/**
 	 * Moves the internal cursor forward.
 	 * @return Nothing (= NULL) unless the next position would be invalid.
