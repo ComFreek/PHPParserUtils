@@ -64,8 +64,12 @@ class ParserStrStream {
 	public function eatUntilChar($needle) {
 		$trash = '';
 		do {
+			if ($this->cur() == $needle) {
+				$this->moveNext();
+				break;
+			}
 			$trash .= $this->cur();
-		} while($this->moveNext() !== false || $this->cur() == $needle);
+		} while($this->moveNext() !== false);
 		
 		return $trash;
 	}
